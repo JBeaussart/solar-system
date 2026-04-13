@@ -120,52 +120,52 @@ img {
 }
 
 .jupiter {
-  --planet-label-dur: 21s;
+  --planet-label-dur: 31s;
   top: -2em;
   left: -2em;
   width: 45em;
   height: 45em;
-  animation: orbit 21s linear infinite;
+  animation: orbit 31s linear infinite;
   z-index: 7;
 }
 
 .saturn {
-  --planet-label-dur: 17s;
+  --planet-label-dur: 52s;
   top: -7em;
   left: -7em;
   width: 55em;
   height: 55em;
-  animation: orbit 17s linear infinite;
+  animation: orbit 52s linear infinite;
   z-index: 6;
 }
 
 .uranus {
-  --planet-label-dur: 19s;
+  --planet-label-dur: 90s;
   top: -12em;
   left: -12em;
   width: 65em;
   height: 65em;
-  animation: orbit 19s linear infinite;
+  animation: orbit 90s linear infinite;
   z-index: 5;
 }
 
 .neptune {
-  --planet-label-dur: 15s;
+  --planet-label-dur: 177s;
   top: -17em;
   left: -17em;
   width: 75em;
   height: 75em;
-  animation: orbit 15s linear infinite;
+  animation: orbit 177s linear infinite;
   z-index: 4;
 }
 
 .pluton {
-  --planet-label-dur: 18s;
+  --planet-label-dur: 266s;
   top: -22em;
   left: -22em;
   width: 85em;
   height: 85em;
-  animation: orbit 18s linear infinite;
+  animation: orbit 266s linear infinite;
   z-index: 3;
 }
 
@@ -432,13 +432,86 @@ img {
 
 .info {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 15em;
-  height: auto;
-  background-color: rgba(255, 255, 255, 0.226);
-  color: rgb(255, 255, 255);
-  font-size: 1em;
-  padding: 1em;
+  top: 1rem;
+  right: 1rem;
+  width: min(19em, calc(100vw - 2rem));
+  max-height: min(72vh, 26rem);
+  overflow-x: hidden;
+  overflow-y: auto;
   z-index: 100;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(145deg, rgba(22, 28, 52, 0.82) 0%, rgba(8, 10, 24, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.2) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.info::-webkit-scrollbar {
+  width: 6px;
+}
+
+.info::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+}
+
+.info::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.info__hint {
+  margin: 0;
+  padding: 1.15rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: rgba(200, 210, 255, 0.65);
+}
+
+.info h2 {
+  margin: 0;
+  padding: 1rem 1.25rem 0.65rem;
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  text-shadow: 0 0 28px rgba(130, 170, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(100, 140, 255, 0.12) 0%, transparent 100%);
+}
+
+.info ul {
+  margin: 0;
+  padding: 0.75rem 1.15rem 1.1rem 1.25rem;
+  list-style: none;
+}
+
+.info li {
+  margin: 0 0 0.5rem;
+  padding: 0.35rem 0 0.35rem 0.85rem;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.82);
+  border-left: 2px solid rgba(120, 165, 255, 0.4);
+  border-radius: 0 2px 2px 0;
+}
+
+.info li:last-child {
+  margin-bottom: 0;
+}
+
+.info sup {
+  font-size: 0.72em;
+  vertical-align: super;
+  opacity: 0.95;
 }

@@ -43,6 +43,7 @@ function syncMoonLabelUpright() {
 syncMoonLabelUpright();
 
 const info = document.querySelector('.info');
+const INFO_PLACEHOLDER = '<p class="info__hint">Cliquez sur une planète</p>';
 
 const planetInfos = {
   sun: '<h2>Soleil</h2><ul><li>Type: Étoile</li><li>Surnom: Le Roi Soleil</li><li>Masse: 1,989 &times; 10<sup>30</sup> kg</li><li>Diamètre: 1 392 700 km</li></ul>',
@@ -84,6 +85,7 @@ planets.forEach((planet) => {
 
     if (activePlanet === clickedPlanet) {
       activePlanet = null;
+      info.innerHTML = INFO_PLACEHOLDER;
     } else {
       info.innerHTML = planetInfo;
       activePlanet = clickedPlanet;
@@ -98,6 +100,11 @@ planets.forEach((planet) => {
   });
 });
 
-document.addEventListener('click', () => {
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.info')) return;
   activePlanet = null;
+  info.innerHTML = INFO_PLACEHOLDER;
+  document.querySelectorAll('.planets.is-selected').forEach((el) => {
+    el.classList.remove('is-selected');
+  });
 });
