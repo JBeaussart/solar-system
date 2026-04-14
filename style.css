@@ -32,20 +32,10 @@ img {
   height: 10em;
   z-index: 12;
   border-radius: 50%;
-  overflow: hidden;
   box-shadow: 0 0 3em rgb(255, 128, 0);
   animation: orbit 50s linear infinite;
   cursor: pointer;
 
-}
-
-.sun img {
-  width: 110%;
-  height: 110%;
-  display: block;
-  border-radius: 50%;
-  object-fit: cover;
-  transform: scale(1.12);
 }
 
 .mercury,
