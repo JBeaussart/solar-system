@@ -32,10 +32,20 @@ img {
   height: 10em;
   z-index: 12;
   border-radius: 50%;
+  overflow: hidden;
   box-shadow: 0 0 3em rgb(255, 128, 0);
   animation: orbit 50s linear infinite;
   cursor: pointer;
 
+}
+
+.sun img {
+  width: 110%;
+  height: 110%;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: scale(1.12);
 }
 
 .mercury,
@@ -514,4 +524,37 @@ img {
   font-size: 0.72em;
   vertical-align: super;
   opacity: 0.95;
+}
+
+.controls {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 110;
+}
+
+.speed-toggle {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(12, 18, 40, 0.78);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.speed-toggle:hover {
+  background: rgba(35, 55, 120, 0.85);
+}
+
+.speed-toggle:active {
+  transform: translateY(1px);
+}
+
+.speed-toggle.is-real-speed {
+  background: rgba(62, 123, 245, 0.88);
+  border-color: rgba(181, 209, 255, 0.95);
 }

@@ -18,6 +18,92 @@ createStars();
 
 const moonOrbit = document.querySelector('.moon');
 const moonLabel = moonOrbit?.querySelector('.planet-hover-name');
+const speedToggleButton = document.querySelector('.speed-toggle');
+
+const ORBIT_DEFAULT_DURATIONS = {
+  mercury: 68.7,
+  venus: 48.7,
+  earth: 36.5,
+  moon: 2.7,
+  mars: 26.5,
+  jupiter: 31,
+  saturn: 52,
+  uranus: 90,
+  neptune: 177,
+  pluton: 266,
+};
+
+const ORBITAL_PERIOD_DAYS = {
+  mercury: 88,
+  venus: 224.7,
+  earth: 365.25,
+  moon: 27.3,
+  mars: 687,
+  jupiter: 4332.6,
+  saturn: 10759.2,
+  uranus: 30688.5,
+  neptune: 60182,
+  pluton: 90560,
+};
+
+let isRealSpeedEnabled = false;
+
+function formatDuration(seconds) {
+  return `${seconds.toFixed(2)}s`;
+}
+
+function setOrbitDuration(planetName, durationSeconds) {
+  const orbitElement = document.querySelector(`.${planetName}`);
+  if (!orbitElement) {
+    return;
+  }
+  orbitElement.style.animationDuration = formatDuration(durationSeconds);
+  if (planetName !== 'moon') {
+    orbitElement.style.setProperty('--planet-label-dur', formatDuration(durationSeconds));
+  }
+}
+
+function applyDefaultSpeeds() {
+  Object.entries(ORBIT_DEFAULT_DURATIONS).forEach(([planetName, durationSeconds]) => {
+    setOrbitDuration(planetName, durationSeconds);
+  });
+}
+
+function applyRealSpeeds() {
+  const jupiterPeriodDays = ORBITAL_PERIOD_DAYS.jupiter;
+  const jupiterReferenceSeconds = ORBIT_DEFAULT_DURATIONS.jupiter;
+  const realSpeedScale = jupiterPeriodDays / jupiterReferenceSeconds;
+
+  Object.entries(ORBITAL_PERIOD_DAYS).forEach(([planetName, periodDays]) => {
+    const scaledSeconds = periodDays / realSpeedScale;
+    setOrbitDuration(planetName, scaledSeconds);
+  });
+}
+
+function updateSpeedToggleUI() {
+  if (!speedToggleButton) {
+    return;
+  }
+  speedToggleButton.classList.toggle('is-real-speed', isRealSpeedEnabled);
+  speedToggleButton.setAttribute('aria-pressed', String(isRealSpeedEnabled));
+  speedToggleButton.textContent = isRealSpeedEnabled
+    ? 'Revenir à la vitesse actuelle'
+    : 'Activer la vitesse réelle';
+}
+
+function toggleOrbitSpeedMode() {
+  isRealSpeedEnabled = !isRealSpeedEnabled;
+  if (isRealSpeedEnabled) {
+    applyRealSpeeds();
+  } else {
+    applyDefaultSpeeds();
+  }
+  updateSpeedToggleUI();
+}
+
+if (speedToggleButton) {
+  speedToggleButton.addEventListener('click', toggleOrbitSpeedMode);
+}
 
 function accumulatedRotationDeg(el) {
   let combined = new DOMMatrix();
