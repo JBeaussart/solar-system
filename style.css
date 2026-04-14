@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  font-size: 10px;
+  font-size: clamp(4px, 1.1vmin, 10px);
   width: 40em;
   height: 40em;
   position: relative;
@@ -547,4 +547,45 @@ img {
 .speed-toggle.is-real-speed {
   background: rgba(62, 123, 245, 0.88);
   border-color: rgba(181, 209, 255, 0.95);
+}
+
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 22vh;
+  }
+
+  .container {
+    font-size: clamp(3px, 1.1vmin, 8px);
+  }
+
+  .planet-hover-name {
+    font-size: 1.05em;
+  }
+
+  .controls {
+    top: 0.65rem;
+    left: 0.65rem;
+  }
+
+  .speed-toggle {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .info {
+    top: auto;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: auto;
+    max-height: 32vh;
+    font-size: 0.86rem;
+  }
+
+  .info__hint {
+    padding: 0.95rem 1rem;
+    font-size: 0.88rem;
+  }
 }
