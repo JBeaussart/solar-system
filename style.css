@@ -62,6 +62,13 @@ img {
   pointer-events: none;
 }
 
+.sun,
+.planets,
+.moon,
+.speed-toggle {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .sun img,
 .planets:not(.sun)::before,
 .planets:not(.sun)::after,
